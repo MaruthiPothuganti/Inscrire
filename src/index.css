@@ -1,13 +1,27 @@
-body {
+/* @import url('https://lightui.netlify.app/style.css'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+    --prime-blue: #1877f2;
+    --prime-blue-lt: #9DCAF7;
+    --secondary-white: #fefdff;
+    --accent-color: #14bdeb;
+    --accent-color-lt: #99E5FF;
+    --danger-color: #A50055;
+    --danger-color-lt: #F44336;
+    --warning-color: #FF9800;
+    --warning-color-lt: #FBF9C9;
+    --success-color: #4CAF50;
+    --success-color-lt: #9ADDCA;
+    --text-color: #131200;
+    --text-color-2: #8998a9;
+    --primary-bg-color: rgb(212, 212, 212);
+    --secondary-bg-color: #1f2937;
 }
+
