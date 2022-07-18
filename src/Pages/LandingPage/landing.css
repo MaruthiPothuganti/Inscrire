@@ -38,3 +38,14 @@
 .heroImg{
     width: 20rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .heroTextSection{
+        width: auto;
+    }
+  .heroImageSection{
+    display: none;
+  }
+}
+
+
