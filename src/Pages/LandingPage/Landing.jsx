@@ -1,4 +1,5 @@
 import "./landing.css";
+import { Link } from "react-router-dom";
 
 export function LandingPage() {
   return (
@@ -19,7 +20,9 @@ export function LandingPage() {
             </p>
           </div>
           <div>
-            <button className="btn btn-primary">Join Now</button>
+            <Link to="/HomePage">
+              <button className="btn btn-primary">Join Now</button>
+            </Link>
             <p>Already have an account?</p>
           </div>
         </section>

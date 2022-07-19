@@ -3,13 +3,3 @@
         border-radius: 0.5rem;
         cursor: pointer;
     }
-
-    .btn-primary {
-        background-color: var(--prime-blue);
-        color: var( --secondary-white);
-        border: 2px solid transparent;
-    }
-
-    .btn-primary:focus {
-        outline: 2px solid var(--prime-blue-lt);
-    }

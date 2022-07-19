@@ -1,13 +1,19 @@
 import './App.css';
-import { Routes, Route } from "react-router-dom";
-import { LandingPage } from './Pages/index';
+import {useLocation} from 'react-router-dom'
+import { AllRoutes } from './Pages/AllRoutes';
+import { SideNav, Navbar } from './Components'
 
 function App() {
-  return (
-    <Routes>
-      <Route path='/' element={<LandingPage/>}/>
-    </Routes>
 
+  const {pathname} = useLocation();
+  return (
+    <div>
+      {pathname!=="/"?<>
+      <Navbar />
+      <SideNav/>
+      </>: null}
+      <AllRoutes/>
+  </div>
   );
 }
 

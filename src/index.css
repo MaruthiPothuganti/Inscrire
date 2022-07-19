@@ -1,4 +1,10 @@
-/* @import url('https://lightui.netlify.app/style.css'); */
+/* buttons and  colors  */
+@import url('https://lightui.netlify.app/Components/Button/button.css');
+
+
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
 * {
@@ -7,21 +13,13 @@
   font-family: 'Poppins', sans-serif;
 }
 
-:root {
-    --prime-blue: #1877f2;
-    --prime-blue-lt: #9DCAF7;
-    --secondary-white: #fefdff;
-    --accent-color: #14bdeb;
-    --accent-color-lt: #99E5FF;
-    --danger-color: #A50055;
-    --danger-color-lt: #F44336;
-    --warning-color: #FF9800;
-    --warning-color-lt: #FBF9C9;
-    --success-color: #4CAF50;
-    --success-color-lt: #9ADDCA;
-    --text-color: #131200;
-    --text-color-2: #8998a9;
-    --primary-bg-color: rgb(212, 212, 212);
-    --secondary-bg-color: #1f2937;
+
+html{
+ font-size: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 80%;
+  }
+}
