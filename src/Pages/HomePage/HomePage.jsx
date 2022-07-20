@@ -2,7 +2,7 @@ import "./homepage.css";
 
 export function HomePage() {
   return (
-    <main className="w-full h-auto p-8 flex justify-center gap-4">
+    <main className="grow w-full h-auto p-8 flex justify-center gap-4">
       <div className="flex flex-wrap justify-center gap-4">
         <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">

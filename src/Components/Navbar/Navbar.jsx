@@ -45,15 +45,13 @@ export const Navbar = () => {
     <Popover className="relative bg-white">
       <div className="max-w-full mx-auto px-4 sm:px-6 border-b-2 border-blue-500">
         <div className="flex justify-between items-center py-5 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <NavLink to="/HomePage">
-              <span className="sr-only">Workflow</span>
-              <h1 className="text-4xl font-semibold">
-                In
-                <span className="text-blue-500">Scrire</span>
-              </h1>
-            </NavLink>
-          </div>
+          <NavLink to="/HomePage">
+            <h1 className="text-4xl font-semibold">
+              In
+              <span className="text-blue-500">Scrire</span>
+            </h1>
+          </NavLink>
+
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100  hover:outline-none hover:ring-2 hover:ring-inset hover:ring-blue-500">
               <span className="sr-only">Open menu</span>
