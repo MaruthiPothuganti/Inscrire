@@ -4,12 +4,10 @@
 @tailwind utilities;
 
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
-
-
-/* buttons and  colors  */
-@import url('https://lightui.netlify.app/Components/Button/button.css');
-
-
-
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}

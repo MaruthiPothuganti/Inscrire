@@ -43,16 +43,19 @@ const routes = [
 export const Navbar = () => {
   return (
     <Popover className="relative bg-white">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+      <div className="max-w-full mx-auto px-4 sm:px-6 border-b-2 border-blue-500">
+        <div className="flex justify-between items-center py-5 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <NavLink to="/HomePage">
               <span className="sr-only">Workflow</span>
-              <h1 className="text-4xl font-semibold">Inscrire</h1>
+              <h1 className="text-4xl font-semibold">
+                In
+                <span className="text-blue-500">Scrire</span>
+              </h1>
             </NavLink>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100  hover:outline-none hover:ring-2 hover:ring-inset hover:ring-indigo-500">
+            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100  hover:outline-none hover:ring-2 hover:ring-inset hover:ring-blue-500">
               <span className="sr-only">Open menu</span>
               <FiMenu className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
@@ -60,7 +63,7 @@ export const Navbar = () => {
 
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <div className="-mr-2 -my-2 md">
-              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                 <span className="sr-only">Dark Mode</span>
                 <BsFillMoonFill className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
@@ -89,7 +92,7 @@ export const Navbar = () => {
                   <h1 className="h-8 w-auto sm:h-10">Inscrire</h1>
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                     <span className="sr-only">Close menu</span>
                     <CgClose className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -104,7 +107,7 @@ export const Navbar = () => {
                       className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                     >
                       <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                        className="flex-shrink-0 h-6 w-6 text-blue-500"
                         aria-hidden="true"
                       />
                       <span className="ml-3 text-base font-medium text-gray-900">

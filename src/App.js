@@ -8,11 +8,15 @@ function App() {
   const {pathname} = useLocation();
   return (
     <div>
-      {pathname!=="/"?<>
-      <Navbar />
-      <SideNav/>
-      </>: null}
-      <AllRoutes/>
+      {pathname!=="/"&&
+        <Navbar />
+      }
+      <div className='flex'>
+        {pathname!=="/"&&
+        <SideNav/>
+      }
+          <AllRoutes className="w-full"/>
+        </div>
   </div>
   );
 }
