@@ -4,6 +4,7 @@ import { BsFillMoonFill } from "react-icons/bs";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdLabelOutline, MdOutlineArchive } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { TbAdjustmentsHorizontal } from "react-icons/tb";
 
 export {
   FiMenu,
@@ -14,4 +15,5 @@ export {
   MdOutlineArchive,
   FaRegTrashAlt,
   CgProfile,
+  TbAdjustmentsHorizontal,
 };
