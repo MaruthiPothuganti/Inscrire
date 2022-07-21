@@ -4,7 +4,7 @@ import { SearchInput } from "../../Components/SearchInput/SearchInput";
 export function HomePage() {
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">
-      <div className="flex justify-center sticky">
+      <div className="flex justify-center">
         <SearchInput />
       </div>
       <div className="flex flex-wrap justify-center gap-4">
