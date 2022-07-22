@@ -1,8 +1,9 @@
 import "./sidenav.css";
 import { NavLink } from "react-router-dom";
 import { routes } from "../routes";
+import { useNotes } from "../../Context/NoteContext";
 
-export function SideNav() {
+export const SideNav = () => {
   return (
     <aside className="hidden  md:grid h-full p-8">
       <nav className="grid gap-y-8 w-64 mt-6">
@@ -19,7 +20,16 @@ export function SideNav() {
             <span className="ml-3">{item.name}</span>
           </NavLink>
         ))}
+
+        <div>
+          <button
+            type="button"
+            className="px-5 py-2.5 w-3/4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+          >
+            + Create Note
+          </button>
+        </div>
       </nav>
     </aside>
   );
-}
+};

@@ -4,7 +4,7 @@ export const SearchInput = () => {
   return (
     <div className="w-3/4 md:w-3/5">
       <label
-        for="default-search"
+        htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
       >
         Search

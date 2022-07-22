@@ -1,44 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import {
-  FiMenu,
-  CgClose,
-  BsFillMoonFill,
-  AiOutlineHome,
-  MdLabelOutline,
-  MdOutlineArchive,
-  FaRegTrashAlt,
-  CgProfile,
-} from "../Icons";
-
-const routes = [
-  {
-    name: "HomePage",
-    pathName: "/HomePage",
-    icon: AiOutlineHome,
-  },
-  {
-    name: "Labels",
-    pathName: "/Labels",
-    icon: MdLabelOutline,
-  },
-  {
-    name: "Archive",
-    pathName: "/Archive",
-    icon: MdOutlineArchive,
-  },
-  {
-    name: "Trash",
-    pathName: "/Trash",
-    icon: FaRegTrashAlt,
-  },
-  {
-    name: "Profile",
-    pathName: "/Profile",
-    icon: CgProfile,
-  },
-];
+import { FiMenu, CgClose, BsFillMoonFill } from "../Icons";
+import { routes } from "../routes";
 
 export const Navbar = () => {
   return (
