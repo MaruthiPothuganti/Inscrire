@@ -10,19 +10,12 @@ export const NoteModal = ({ handleClose, show }) => {
     priority: null,
     color: null,
   };
+
   const [note, setNote] = useState(initialNoteState);
+
   const showHideClassName = show
     ? `fixed z-10 top-0 left-0 w-full h-full backdrop-blur-sm grid place-items-center block`
     : `fixed z-10 top-0 left-0 w-full h-full backdrop-blur-sm grid place-items-center hidden`;
-
-  const colors = [
-    "bg-red-500",
-    "bg-amber-500",
-    "bg-yellow-500",
-    "bg-lime-500",
-    "bg-green-500",
-    "bg-emerald-500",
-  ];
 
   return (
     <div className={showHideClassName}>
