@@ -6,6 +6,7 @@ import {
   Trash,
   Profile,
   Labels,
+  Login,
 } from "./index";
 
 export const AllRoutes = () => {
@@ -17,6 +18,7 @@ export const AllRoutes = () => {
       <Route path="/Archive" element={<Archive />} />
       <Route path="/Trash" element={<Trash />} />
       <Route path="/Profile" element={<Profile />} />
+      <Route path="/Login" element={<Login />} />
     </Routes>
   );
 };
