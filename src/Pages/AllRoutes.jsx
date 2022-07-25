@@ -7,6 +7,7 @@ import {
   Profile,
   Labels,
   Login,
+  Signup,
 } from "./index";
 
 export const AllRoutes = () => {
@@ -19,6 +20,7 @@ export const AllRoutes = () => {
       <Route path="/Trash" element={<Trash />} />
       <Route path="/Profile" element={<Profile />} />
       <Route path="/Login" element={<Login />} />
+      <Route path="/Signup" element={<Signup />} />
     </Routes>
   );
 };
