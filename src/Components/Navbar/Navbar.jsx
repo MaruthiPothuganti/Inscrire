@@ -1,46 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import {
-  FiMenu,
-  CgClose,
-  BsFillMoonFill,
-  AiOutlineHome,
-  MdLabelOutline,
-  MdOutlineArchive,
-  FaRegTrashAlt,
-  CgProfile,
-} from "../Icons";
-
-const routes = [
-  {
-    name: "HomePage",
-    pathName: "/HomePage",
-    icon: AiOutlineHome,
-  },
-  {
-    name: "Labels",
-    pathName: "/Labels",
-    icon: MdLabelOutline,
-  },
-  {
-    name: "Archive",
-    pathName: "/Archive",
-    icon: MdOutlineArchive,
-  },
-  {
-    name: "Trash",
-    pathName: "/Trash",
-    icon: FaRegTrashAlt,
-  },
-  {
-    name: "Profile",
-    pathName: "/Profile",
-    icon: CgProfile,
-  },
-];
+import { FiMenu, CgClose, BsFillMoonFill } from "../Icons";
+import { routes } from "../routes";
+import { useNotes } from "../../Context/NoteContext";
 
 export const Navbar = () => {
+  const { setNoteModal } = useNotes();
   return (
     <Popover className="relative bg-white">
       <div className="max-w-full mx-auto px-4 sm:px-6 border-b-2 border-blue-500">
@@ -81,7 +47,7 @@ export const Navbar = () => {
       >
         <Popover.Panel
           focus
-          className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+          className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
         >
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div className="pt-5 pb-6 px-5">
@@ -113,6 +79,15 @@ export const Navbar = () => {
                       </span>
                     </NavLink>
                   ))}
+                  <div>
+                    <button
+                      type="button"
+                      className="px-5 py-2.5 w-full text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+                      onClick={() => setNoteModal(true)}
+                    >
+                      + Create Note
+                    </button>
+                  </div>
                 </nav>
               </div>
             </div>
