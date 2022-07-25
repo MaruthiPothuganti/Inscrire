@@ -3,8 +3,10 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { FiMenu, CgClose, BsFillMoonFill } from "../Icons";
 import { routes } from "../routes";
+import { useNotes } from "../../Context/NoteContext";
 
 export const Navbar = () => {
+  const { setNoteModal } = useNotes();
   return (
     <Popover className="relative bg-white">
       <div className="max-w-full mx-auto px-4 sm:px-6 border-b-2 border-blue-500">
@@ -77,6 +79,15 @@ export const Navbar = () => {
                       </span>
                     </NavLink>
                   ))}
+                  <div>
+                    <button
+                      type="button"
+                      className="px-5 py-2.5 w-full text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+                      onClick={() => setNoteModal(true)}
+                    >
+                      + Create Note
+                    </button>
+                  </div>
                 </nav>
               </div>
             </div>

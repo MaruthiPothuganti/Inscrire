@@ -4,6 +4,8 @@ import { routes } from "../routes";
 import { useNotes } from "../../Context/NoteContext";
 
 export const SideNav = () => {
+  const { setNoteModal } = useNotes();
+
   return (
     <aside className="hidden  md:grid h-full p-8">
       <nav className="grid gap-y-8 w-64 mt-6">
@@ -25,6 +27,7 @@ export const SideNav = () => {
           <button
             type="button"
             className="px-5 py-2.5 w-3/4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+            onClick={() => setNoteModal(true)}
           >
             + Create Note
           </button>

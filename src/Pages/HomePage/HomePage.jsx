@@ -1,11 +1,9 @@
-import "./homepage.css";
-import { NoteModal, SearchInput } from "../../Components";
+import { SearchInput } from "../../Components";
 
 export function HomePage() {
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">
       <div className="flex justify-center">
-        <NoteModal />
         <SearchInput />
       </div>
       <div className="flex flex-wrap justify-center gap-4">
