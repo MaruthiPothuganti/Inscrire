@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 export const useAxios = () => {
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 

@@ -9,16 +9,52 @@ import {
   Login,
   Signup,
 } from "./index";
+import { RequireAuth } from "../Components";
 
 export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/HomePage" element={<HomePage />} />
-      <Route path="/Labels" element={<Labels />} />
-      <Route path="/Archive" element={<Archive />} />
-      <Route path="/Trash" element={<Trash />} />
-      <Route path="/Profile" element={<Profile />} />
+      <Route
+        path="/HomePage"
+        element={
+          <RequireAuth>
+            <HomePage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/Labels"
+        element={
+          <RequireAuth>
+            <Labels />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/Archive"
+        element={
+          <RequireAuth>
+            <Archive />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/Trash"
+        element={
+          <RequireAuth>
+            <Trash />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/Profile"
+        element={
+          <RequireAuth>
+            <Profile />
+          </RequireAuth>
+        }
+      />
       <Route path="/Login" element={<Login />} />
       <Route path="/Signup" element={<Signup />} />
     </Routes>

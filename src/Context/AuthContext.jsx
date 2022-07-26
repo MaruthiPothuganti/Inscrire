@@ -9,10 +9,7 @@ const AuthContext = ({ children }) => {
     name: "",
     email: "",
   };
-  const [authState, dispatchAuth] = useReducer(
-    authReducer,
-    JSON.parse(localStorage.getItem("userData")) ?? initialAuthState
-  );
+  const [authState, dispatchAuth] = useReducer(authReducer, initialAuthState);
 
   return (
     <AuthorizationContext.Provider value={{ authState, dispatchAuth }}>
