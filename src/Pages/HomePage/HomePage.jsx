@@ -2,7 +2,7 @@ import { SearchInput } from "../../Components";
 
 export function HomePage() {
   return (
-    <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">
+    <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col ">
       <div className="flex justify-center">
         <SearchInput />
       </div>

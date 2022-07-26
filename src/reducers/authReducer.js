@@ -1,10 +1,42 @@
-export const authReducer = (state, action) => {
-    switch (action.payload) {
-        case value:
+import { ACTION_TYPES } from "../Utils/constants";
 
-            break;
+const { LOGIN,LOGOUT, SIGNUP } = ACTION_TYPES;
+export const authReducer = (state, action) => {
+    switch (action.type) {
+        case LOGIN:
+            localStorage.setItem("userData", {
+                token: action.payload.data.encodedToken,
+                name: action.payload.data.foundUser.firstName,
+                email: action.payload.data.foundUser.email,
+            })
+            return {
+                ...state,
+                token: action.payload.data.encodedToken,
+                name: action.payload.data.foundUser.firstName,
+                email: action.payload.data.foundUser.email,
+            }
+
+        case SIGNUP:
+            localStorage.setItem("userData",{
+                token: action.payload.data.encodedToken,
+                name: action.payload.data.createdUser.firstName,
+                email: action.payload.data.createdUser.email,
+            })
+            return {
+                ...state,
+                token: action.payload.data.encodedToken,
+                name: action.payload.data.createdUser.firstName,
+                email: action.payload.data.createdUser.email,
+            }
+
+        case LOGOUT:
+            return {
+                token: "",
+                name: "",
+                email: "",
+            }
 
         default:
-            break;
+            return state;
     }
 }
