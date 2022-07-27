@@ -31,6 +31,7 @@ export const authReducer = (state, action) => {
             }
 
         case LOGOUT:
+            localStorage.clear();
             return {
                 token: "",
                 name: "",
