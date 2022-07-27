@@ -14,16 +14,17 @@ const { isNoteModalOpen, setNoteModal } = useNotes();
         <Navbar />
       }
       <div className='flex'>
-        {pathname!=="/"&&
+        {pathname!=="/" &&
         <SideNav/>
         }
+
         <AllRoutes className="w-full" />
 
         <NoteModal
         handleClose={() => setNoteModal(false)}
         show={isNoteModalOpen}
       />
-        </div>
+      </div>
   </div>
   );
 }

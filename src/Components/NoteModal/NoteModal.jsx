@@ -8,7 +8,7 @@ export const NoteModal = ({ handleClose, show }) => {
     title: "",
     editorState: EditorState.createEmpty(),
     priority: null,
-    color: null,
+    color: "",
   };
 
   const [note, setNote] = useState(initialNoteState);
@@ -21,7 +21,7 @@ export const NoteModal = ({ handleClose, show }) => {
     <div className={showHideClassName}>
       <section
         className="fixed rounded-md bg-white p-5 h-auto w-4/5 md:w-2/4"
-        style={{ "background-color": note.color }}
+        style={{ backgroundColor: note.color }}
       >
         <h2>
           <input
@@ -29,7 +29,7 @@ export const NoteModal = ({ handleClose, show }) => {
             className="w-full h-10 text-2xl p-2 outline-none my-2"
             placeholder="Title"
             onChange={(e) => setNote({ ...note, title: e.target.value })}
-            style={{ "background-color": note.color }}
+            style={{ backgroundColor: note.color }}
           />
         </h2>
         <div>
@@ -46,7 +46,7 @@ export const NoteModal = ({ handleClose, show }) => {
         </div>
         <div className="flex gap-3 items-center">
           <div>
-            <label for="tags">Priority : </label>
+            <label htmlFor="tags">Priority : </label>
             <select
               name="tags"
               id="tags"
@@ -73,7 +73,7 @@ export const NoteModal = ({ handleClose, show }) => {
         <div className="flex justify-end gap-5">
           <button
             className="bg-blue-500 text-white rounded-sm px-3 py-2"
-            onClick={console.log(note)}
+            // onClick={console.log(note)}
           >
             Save
           </button>
