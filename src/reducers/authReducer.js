@@ -4,11 +4,12 @@ const { LOGIN,LOGOUT, SIGNUP } = ACTION_TYPES;
 export const authReducer = (state, action) => {
     switch (action.type) {
         case LOGIN:
-            localStorage.setItem("userData", {
+            console.log(action.payload);
+            localStorage.setItem("userData", JSON.stringify({
                 token: action.payload.data.encodedToken,
                 name: action.payload.data.foundUser.firstName,
                 email: action.payload.data.foundUser.email,
-            })
+            }))
             return {
                 ...state,
                 token: action.payload.data.encodedToken,
@@ -17,11 +18,11 @@ export const authReducer = (state, action) => {
             }
 
         case SIGNUP:
-            localStorage.setItem("userData",{
+            localStorage.setItem("userData",JSON.stringify({
                 token: action.payload.data.encodedToken,
                 name: action.payload.data.createdUser.firstName,
                 email: action.payload.data.createdUser.email,
-            })
+            }))
             return {
                 ...state,
                 token: action.payload.data.encodedToken,

@@ -5,6 +5,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { MdLabelOutline, MdOutlineArchive } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
+import { FiLogOut } from "react-icons/fi";
 
 export {
   FiMenu,
@@ -16,4 +17,5 @@ export {
   FaRegTrashAlt,
   CgProfile,
   TbAdjustmentsHorizontal,
+  FiLogOut,
 };

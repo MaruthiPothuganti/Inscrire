@@ -73,7 +73,7 @@ export const NoteModal = ({ handleClose, show }) => {
         <div className="flex justify-end gap-5">
           <button
             className="bg-blue-500 text-white rounded-sm px-3 py-2"
-            onClick={console.log(note)}
+            // onClick={console.log(note)}
           >
             Save
           </button>
