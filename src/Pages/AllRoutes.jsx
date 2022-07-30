@@ -10,6 +10,7 @@ import {
   Signup,
 } from "./index";
 import { RequireAuth } from "../Components";
+import MockmanEs from "mockman-js";
 
 export const AllRoutes = () => {
   return (
@@ -57,6 +58,7 @@ export const AllRoutes = () => {
       />
       <Route path="/Login" element={<Login />} />
       <Route path="/Signup" element={<Signup />} />
+      <Route path="/Mock" element={<MockmanEs />} />
     </Routes>
   );
 };

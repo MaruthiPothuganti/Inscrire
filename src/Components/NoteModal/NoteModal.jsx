@@ -1,21 +1,41 @@
 import { useState } from "react";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import JoditEditor from "jodit-react";
+
+import { useAuth } from "../../Context/AuthContext";
+import { FaPalette } from "../Icons";
+import { colors } from "../../Utils/colors";
+
+import axios from "axios";
 
 export const NoteModal = ({ handleClose, show }) => {
   const initialNoteState = {
     title: "",
-    editorState: EditorState.createEmpty(),
-    priority: null,
-    color: "",
+    priority: "nulls",
+    color: "#FFFFFF",
+    content: "",
   };
 
   const [note, setNote] = useState(initialNoteState);
 
+  const { authState } = useAuth();
+  const { token } = authState;
+
   const showHideClassName = show
     ? `fixed z-10 top-0 left-0 w-full h-full backdrop-blur-sm grid place-items-center block`
     : `fixed z-10 top-0 left-0 w-full h-full backdrop-blur-sm grid place-items-center hidden`;
+
+  const addNotes = async (note) => {
+    try {
+      const resp = await axios.post(
+        "/api/notes",
+        { note },
+        { headers: { authorization: token } }
+      );
+      console.log(resp.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={showHideClassName}>
@@ -28,20 +48,18 @@ export const NoteModal = ({ handleClose, show }) => {
             type="text"
             className="w-full h-10 text-2xl p-2 outline-none my-2"
             placeholder="Title"
+            value={note.title}
             onChange={(e) => setNote({ ...note, title: e.target.value })}
-            style={{ backgroundColor: note.color }}
+            style={{ backgroundColor: note.color, color: "black" }}
           />
         </h2>
         <div>
-          <Editor
-            editorState={note.editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            placeholder="Enter your notes here..."
-            onEditorStateChange={(editorState) =>
-              setNote({ ...note, editorState: editorState })
-            }
+          <JoditEditor
+            value={note.content}
+            onChange={(e) => {
+              setNote({ ...note, content: e });
+            }}
+            style={{ color: "black" }}
           />
         </div>
         <div className="flex gap-3 items-center">
@@ -51,29 +69,52 @@ export const NoteModal = ({ handleClose, show }) => {
               name="tags"
               id="tags"
               onChange={(e) => setNote({ ...note, priority: e.target.value })}
+              value={note.priority}
             >
+              <option value="nulls">Select</option>
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option value="low">Low</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="color">Color : </label>
-            <input
-              className="border border-white"
-              value={note.color}
-              type="color"
-              id="color"
-              name="color"
-              placeholder="Color"
-              onChange={(e) => setNote({ ...note, color: e.target.value })}
-            />
+
+          <div className="flex items-center p-2 gap-2">
+            <FaPalette size={34} />
+            <div className="flex gap-1">
+              {colors.map((color) => {
+                return (
+                  <div key={color}>
+                    <input
+                      className="sr-only peer"
+                      type="radio"
+                      value={color}
+                      onChange={(e) => {
+                        setNote({ ...note, color: e.target.value });
+                      }}
+                      name="answer"
+                      id={color}
+                    />
+
+                    <label
+                      className="w-14 h-14 px-3 rounded-full bg-blue-500 border border-gray-300 cursor-pointer focus:outline-none peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent"
+                      style={{ background: color }}
+                      htmlFor={color}
+                    ></label>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="flex justify-end gap-5">
           <button
             className="bg-blue-500 text-white rounded-sm px-3 py-2"
-            // onClick={console.log(note)}
+            onClick={() => {
+              addNotes(note);
+              setNote(initialNoteState);
+              handleClose();
+            }}
+            disabled={note.content === ""}
           >
             Save
           </button>

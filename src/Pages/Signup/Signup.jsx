@@ -18,7 +18,6 @@ export const Signup = () => {
   const { SIGNUP } = ACTION_TYPES;
 
   const signupHandler = async () => {
-    console.log("");
     try {
       const signupResp = await axios.request({
         method: "post",
@@ -29,9 +28,8 @@ export const Signup = () => {
           password: signupCreds.password,
         },
       });
-      console.log(signupResp);
+
       if (signupResp.status === 201) {
-        console.log(signupResp);
         dispatchAuth({
           type: SIGNUP,
           payload: signupResp,
