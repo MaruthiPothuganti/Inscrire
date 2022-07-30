@@ -50,7 +50,7 @@ export const NoteModal = ({ handleClose, show }) => {
             placeholder="Title"
             value={note.title}
             onChange={(e) => setNote({ ...note, title: e.target.value })}
-            style={{ backgroundColor: note.color, color: "white" }}
+            style={{ backgroundColor: note.color, color: "black" }}
           />
         </h2>
         <div>
@@ -114,6 +114,7 @@ export const NoteModal = ({ handleClose, show }) => {
               setNote(initialNoteState);
               handleClose();
             }}
+            disabled={note.content === ""}
           >
             Save
           </button>
