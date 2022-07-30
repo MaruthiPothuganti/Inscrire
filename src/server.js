@@ -34,6 +34,8 @@ export function makeServer({ environment = "development" } = {}) {
     models: {
       user: Model,
       notes: Model,
+      archives: Model,
+      trash: Model,
     },
 
     seeds(server) {
