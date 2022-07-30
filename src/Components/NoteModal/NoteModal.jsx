@@ -1,6 +1,9 @@
 import { useState } from "react";
 import JoditEditor from "jodit-react";
+
 import { useAuth } from "../../Context/AuthContext";
+import { FaPalette } from "../Icons";
+import { colors } from "../../Utils/colors";
 
 import axios from "axios";
 
@@ -47,7 +50,7 @@ export const NoteModal = ({ handleClose, show }) => {
             placeholder="Title"
             value={note.title}
             onChange={(e) => setNote({ ...note, title: e.target.value })}
-            style={{ backgroundColor: note.color }}
+            style={{ backgroundColor: note.color, color: "white" }}
           />
         </h2>
         <div>
@@ -56,6 +59,7 @@ export const NoteModal = ({ handleClose, show }) => {
             onChange={(e) => {
               setNote({ ...note, content: e });
             }}
+            style={{ color: "black" }}
           />
         </div>
         <div className="flex gap-3 items-center">
@@ -73,17 +77,33 @@ export const NoteModal = ({ handleClose, show }) => {
               <option value="low">Low</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="color">Color : </label>
-            <input
-              className="border border-white"
-              type="color"
-              id="color"
-              name="color"
-              placeholder="Color"
-              defaultValue={note.color}
-              onChange={(e) => setNote({ ...note, color: e.target.value })}
-            />
+
+          <div className="flex items-center p-2 gap-2">
+            <FaPalette size={34} />
+            <div className="flex gap-1">
+              {colors.map((color) => {
+                return (
+                  <div key={color}>
+                    <input
+                      className="sr-only peer"
+                      type="radio"
+                      value={color}
+                      onChange={(e) => {
+                        setNote({ ...note, color: e.target.value });
+                      }}
+                      name="answer"
+                      id={color}
+                    />
+
+                    <label
+                      className="w-14 h-14 px-3 rounded-full bg-blue-500 border border-gray-300 cursor-pointer focus:outline-none peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent"
+                      style={{ background: color }}
+                      htmlFor={color}
+                    ></label>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="flex justify-end gap-5">

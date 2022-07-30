@@ -1,6 +1,7 @@
 import { useAuth } from "../../Context/AuthContext";
 import { CgProfile } from "../../Components/Icons";
 import { ACTION_TYPES } from "../../Utils/constants";
+import { FaPalette } from "../../Components/Icons";
 
 export function Profile() {
   const { dispatchAuth } = useAuth();
