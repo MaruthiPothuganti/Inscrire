@@ -12,7 +12,7 @@ export const tagReducer = (state, action) => {
 
         case DELETETAG:
 
-            return { ...state }
+            return { ...state, tags: state.tags.filter((item)=> item._id!== action.payload) }
 
         default:
             return{...state}
