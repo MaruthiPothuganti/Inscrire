@@ -1,5 +1,8 @@
 export const ACTION_TYPES = {
     LOGIN: "LOGIN",
     LOGOUT: "LOGOUT",
-    SIGNUP: "SIGNUP"
+    SIGNUP: "SIGNUP",
+    ADDTAG: "ADDTAG",
+    DELETETAG: "DELETETAG",
+    CLEARTAG:"CLEARTAG"
 }

@@ -46,12 +46,7 @@ export const createNoteHandler = function (schema, request) {
       );
     }
     const { note } = JSON.parse(request.requestBody);
-
-    if (!note.tags) {
-      user.notes.push({ ...note, _id: uuid(), tags: [] });
-    } else {
       user.notes.push({ ...note, _id: uuid() });
-    }
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { notes: user.notes });
   } catch (error) {
