@@ -1,4 +1,3 @@
-import "./sidenav.css";
 import { NavLink } from "react-router-dom";
 import { routes } from "../routes";
 import { useNotes } from "../../Context/NoteContext";

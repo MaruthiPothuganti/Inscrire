@@ -1,10 +1,9 @@
 import { useState } from "react";
 import JoditEditor from "jodit-react";
-
 import { useAuth } from "../../Context/AuthContext";
 import { FaPalette } from "../Icons";
 import { colors } from "../../Utils/colors";
-
+import { Tags } from "../Tags/Tags";
 import axios from "axios";
 
 export const NoteModal = ({ handleClose, show }) => {
@@ -13,6 +12,7 @@ export const NoteModal = ({ handleClose, show }) => {
     priority: "nulls",
     color: "#FFFFFF",
     content: "",
+    tags: [],
   };
 
   const [note, setNote] = useState(initialNoteState);
@@ -104,6 +104,18 @@ export const NoteModal = ({ handleClose, show }) => {
                 );
               })}
             </div>
+          </div>
+        </div>
+        <div>
+          <Tags setNote={setNote} note={note} />
+          <div className="flex flex-wrap gap-1">
+            {note.tags.map((item, index) => {
+              return (
+                <span key={index} className="text-white bg-black p-1 text-sm">
+                  {item}
+                </span>
+              );
+            })}
           </div>
         </div>
         <div className="flex justify-end gap-5">

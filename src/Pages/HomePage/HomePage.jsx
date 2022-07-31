@@ -4,6 +4,7 @@ import { useAuth } from "../../Context/AuthContext";
 import { useNotes } from "../../Context/NoteContext";
 import axios from "axios";
 import parse from "html-react-parser";
+import { Tags } from "../../Components";
 
 export function HomePage() {
   const [notes, setNotes] = useState([]);
@@ -16,7 +17,7 @@ export function HomePage() {
       const resp = await axios.get("/api/notes", {
         headers: { authorization: token },
       });
-      console.log("Homepage notes", resp.data);
+
       setNotes(resp.data.notes);
     } catch (err) {
       console.log(err);
@@ -27,7 +28,6 @@ export function HomePage() {
     getNotes();
   }, [isNoteModalOpen]);
 
-  console.log(notes);
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col ">
       <div className="flex justify-center">
