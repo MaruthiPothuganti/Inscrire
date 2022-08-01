@@ -5,11 +5,12 @@ import { SearchInput, Tags } from "../../Components";
 import { useAuth } from "../../Context/AuthContext";
 import { useNotes } from "../../Context/NoteContext";
 import { MdArchive, FaRegTrashAlt, FaRegEdit } from "../../Components/Icons";
+import { addToTrash, addToArchive } from "../../Utils/services";
 
 export function HomePage() {
   const [notes, setNotes] = useState([]);
+  const { isNoteModalOpen, setNoteModal, setNote } = useNotes();
   const { authState } = useAuth();
-  const { isNoteModalOpen, setNoteModal, note, setNote } = useNotes();
   const { token } = authState;
 
   const getNotes = async () => {
@@ -25,7 +26,7 @@ export function HomePage() {
 
   useEffect(() => {
     getNotes();
-  }, [isNoteModalOpen]);
+  }, [isNoteModalOpen, notes]);
 
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col ">
@@ -58,9 +59,12 @@ export function HomePage() {
                     <small>Priority : {note.priority}</small>
                   </div>
                   <div className="flex gap-1">
-                    {note.tags.map((item) => {
+                    {note.tags.map((item, index) => {
                       return (
-                        <small className="text-white bg-pink-500 p-1 rounded-md">
+                        <small
+                          key={index}
+                          className="text-white bg-pink-500 p-1 rounded-md"
+                        >
                           {item}
                         </small>
                       );
@@ -80,10 +84,10 @@ export function HomePage() {
                     >
                       <FaRegEdit title="edit" />
                     </button>
-                    <button>
+                    <button onClick={() => addToArchive(note, token)}>
                       <MdArchive title="Archive" />
                     </button>
-                    <button>
+                    <button onClick={() => addToTrash(note, token)}>
                       <FaRegTrashAlt title="Trash" />
                     </button>
                   </div>

@@ -57,9 +57,9 @@ export const restoreArchivedNote = async (note, token) => {
 
 
 export const deletefromArchived = async (note, token) => {
-    const { _id } = note;
+
     try {
-        await axios.delete(`/api/archives/delete/${_id}`, {note},{headers:{authorization: token}});
+        await axios.delete(`/api/archives/delete/${note._id}`, {note},{headers:{authorization: token}});
     } catch (err) {
         console.log(err)
   }

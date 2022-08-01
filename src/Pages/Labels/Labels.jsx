@@ -1,6 +1,8 @@
 export function Labels() {
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">
+      <h1 className="text-2xl font-bold text-center">Labels</h1>
+
       <div className="flex items-center justify-center">
         <img
           className="w-96 h-auto"
