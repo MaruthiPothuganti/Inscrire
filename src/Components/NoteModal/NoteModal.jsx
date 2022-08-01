@@ -4,38 +4,17 @@ import { useAuth } from "../../Context/AuthContext";
 import { FaPalette } from "../Icons";
 import { colors } from "../../Utils/colors";
 import { Tags } from "../Tags/Tags";
-import axios from "axios";
+import { addToNotes, updateNote } from "../../Utils/services";
+import { useNotes } from "../../Context/NoteContext";
 
 export const NoteModal = ({ handleClose, show }) => {
-  const initialNoteState = {
-    title: "",
-    priority: "nulls",
-    color: "#FFFFFF",
-    content: "",
-    tags: [],
-  };
-
-  const [note, setNote] = useState(initialNoteState);
-
+  const { initialNoteState, note, setNote } = useNotes();
   const { authState } = useAuth();
   const { token } = authState;
 
   const showHideClassName = show
     ? `fixed z-10 top-0 left-0 w-full h-full backdrop-blur-sm grid place-items-center block`
     : `fixed z-10 top-0 left-0 w-full h-full backdrop-blur-sm grid place-items-center hidden`;
-
-  const addNotes = async (note) => {
-    try {
-      const resp = await axios.post(
-        "/api/notes",
-        { note },
-        { headers: { authorization: token } }
-      );
-      console.log(resp.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <div className={showHideClassName}>
@@ -119,20 +98,37 @@ export const NoteModal = ({ handleClose, show }) => {
           </div>
         </div>
         <div className="flex justify-end gap-5">
-          <button
-            className="bg-blue-500 text-white rounded-sm px-3 py-2"
-            onClick={() => {
-              addNotes(note);
-              setNote(initialNoteState);
-              handleClose();
-            }}
-            disabled={note.content === ""}
-          >
-            Save
-          </button>
+          {note._id ? (
+            <button
+              className="bg-blue-500 text-white rounded-sm px-3 py-2"
+              onClick={() => {
+                updateNote(note, token);
+                setNote(initialNoteState);
+                handleClose();
+              }}
+              disabled={note.content === ""}
+            >
+              Update
+            </button>
+          ) : (
+            <button
+              className="bg-blue-500 text-white rounded-sm px-3 py-2"
+              onClick={() => {
+                addToNotes(note, token);
+                setNote(initialNoteState);
+                handleClose();
+              }}
+              disabled={note.content === ""}
+            >
+              Save
+            </button>
+          )}
           <button
             className="border border-blue-500 rounded-sm px-3 py-2 hover:bg-blue-500 hover:text-white"
-            onClick={handleClose}
+            onClick={() => {
+              handleClose();
+              setNote(initialNoteState);
+            }}
           >
             Close
           </button>

@@ -66,6 +66,7 @@ export const Tags = ({ setNote, note }) => {
                         : [...note.tags, e.target.value],
                     });
                   }}
+                  checked={note.tags.includes(ele.tag)}
                 />
                 <label
                   htmlFor={ele.tag}
