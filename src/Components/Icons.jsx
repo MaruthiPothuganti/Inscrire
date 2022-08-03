@@ -8,7 +8,12 @@ import {
   MdArchive,
   MdUnarchive,
 } from "react-icons/md";
-import { FaRegTrashAlt, FaPalette, FaRegEdit } from "react-icons/fa";
+import {
+  FaRegTrashAlt,
+  FaPalette,
+  FaRegEdit,
+  FaTrashRestore,
+} from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
 
@@ -28,4 +33,5 @@ export {
   MdUnarchive,
   MdArchive,
   FaRegEdit,
+  FaTrashRestore,
 };

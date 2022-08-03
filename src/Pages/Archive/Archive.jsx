@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
 import parse from "html-react-parser";
 import { FaRegTrashAlt, MdUnarchive } from "../../Components/Icons";
-import { restoreArchivedNote, deletefromArchived } from "../../Utils/services";
+import { restoreArchivedNote, addToTrash } from "../../Utils/services";
 
 export function Archive() {
   const [archivedNotes, setArchivedNotes] = useState([]);
@@ -22,6 +22,7 @@ export function Archive() {
       console.log(err);
     }
   };
+  console.log("Archives", archivedNotes);
 
   useEffect(() => {
     getArchivedNotes(token);
@@ -73,7 +74,12 @@ export function Archive() {
                     <button onClick={() => restoreArchivedNote(note, token)}>
                       <MdUnarchive title="UnArchive" />
                     </button>
-                    <button onClick={() => deletefromArchived(note, token)}>
+                    <button
+                      onClick={() => {
+                        console.log("bigitybogoty");
+                        addToTrash(note, token);
+                      }}
+                    >
                       <FaRegTrashAlt title="Trash" />
                     </button>
                   </div>

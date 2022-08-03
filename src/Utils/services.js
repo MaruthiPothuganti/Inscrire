@@ -30,7 +30,7 @@ export const updateNote = async (note, token) => {
 export const deletefromAllNotes = async (note, token) => {
     const { _id } = note;
     try {
-        await axios.delete(`/api/notes/archives/${_id}`, {note},{headers:{authorization: token}});
+        await axios.delete(`/api/notes/archives/${_id}`,{headers:{authorization: token}});
     } catch (err) {
         console.log(err)
   }
@@ -57,9 +57,9 @@ export const restoreArchivedNote = async (note, token) => {
 
 
 export const deletefromArchived = async (note, token) => {
-
+  console.log(token)
     try {
-        await axios.delete(`/api/archives/delete/${note._id}`, {note},{headers:{authorization: token}});
+        await axios.delete(`/api/archives/delete/${note._id}`,{headers:{authorization: token}});
     } catch (err) {
         console.log(err)
   }
@@ -88,7 +88,7 @@ export const restoreTrashedNote = async (note, token) => {
 export const deletefromTrash = async (note, token) => {
     const { _id } = note;
     try {
-        await axios.delete(`/api/trash/delete/${_id}`, {note},{headers:{authorization: token}});
+        await axios.delete(`/api/trash/delete/${_id}`, {headers:{authorization: token}});
     } catch (err) {
         console.log(err)
   }
