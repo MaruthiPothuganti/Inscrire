@@ -36,7 +36,7 @@ export const deletefromAllNotes = async (note, token) => {
   }
 }
 
-// -----------------------------------------------------------------------------------------------------------------------------
+// Above function include operations like creating, updating and deletion of notes
 
 export const addToArchive = async (note, token) => {
     const { _id } = note;
@@ -65,7 +65,7 @@ export const deletefromArchived = async (note, token) => {
   }
 }
 
-//-------------------------------------------------------------------------------------------------------------------------------
+//  Above function include operations like archiving , restoring  and deletion of archived notes
 
 export const addToTrash = async (note, token) => {
     const { _id } = note;
@@ -94,6 +94,8 @@ export const deletefromTrash = async (note, token) => {
   }
 }
 
+
+//  Above function include operations like Trashing , restoring  and deletion of Trashed notes
 
 
 
