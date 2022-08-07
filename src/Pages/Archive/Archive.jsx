@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
 import parse from "html-react-parser";
@@ -7,27 +6,8 @@ import { restoreArchivedNote, addToTrash } from "../../Utils/services";
 import { useQuery } from "react-query";
 
 export function Archive() {
-  const [archivedNotes, setArchivedNotes] = useState([]);
   const { authState } = useAuth();
   const { token } = authState;
-
-  // const getArchivedNotes = async (token) => {
-  //   try {
-  //     const resp = await axios.get(`/api/archives`, {
-  //       headers: { authorization: token },
-  //     });
-  //     if (resp) {
-  //       setArchivedNotes(resp.data.archives);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // console.log("Archives", archivedNotes);
-
-  // useEffect(() => {
-  //   getArchivedNotes(token);
-  // }, [archivedNotes]);
 
   const getArchivedNotes = () => {
     return axios.get("/api/archives", {
@@ -36,7 +16,6 @@ export function Archive() {
   };
 
   const { data, refetch } = useQuery(["archives"], getArchivedNotes);
-  console.log(data);
 
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">

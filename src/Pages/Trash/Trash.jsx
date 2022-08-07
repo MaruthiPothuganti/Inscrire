@@ -1,39 +1,28 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import { useAuth } from "../../Context/AuthContext";
 import parse from "html-react-parser";
 import { FaTrashRestore, FaRegTrashAlt } from "../../Components/Icons";
 import { restoreTrashedNote, deletefromTrash } from "../../Utils/services";
 
 export function Trash() {
-  const [trashNotes, setTrashNotes] = useState([]);
   const { authState } = useAuth();
   const { token } = authState;
 
-  const getTrashedNotes = async (token) => {
-    try {
-      const resp = await axios.get(`/api/trash`, {
-        headers: { authorization: token },
-      });
-      if (resp) {
-        setTrashNotes(resp.data.trash);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  const getTrashedNotes = () => {
+    return axios.get(`/api/trash`, {
+      headers: { authorization: token },
+    });
   };
 
-  useEffect(() => {
-    getTrashedNotes(token);
-  }, [trashNotes]);
-  console.log("trash", trashNotes);
+  const { data, refetch } = useQuery(["Trash"], getTrashedNotes);
 
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">
       <h1 className="text-2xl font-bold text-center">Trash</h1>
       <div className="flex flex-wrap justify-center gap-4">
-        {trashNotes.length > 0 ? (
-          trashNotes.map((note) => {
+        {data?.data.trash.length > 0 ? (
+          data?.data.trash.map((note) => {
             return (
               <div
                 key={note._id}
