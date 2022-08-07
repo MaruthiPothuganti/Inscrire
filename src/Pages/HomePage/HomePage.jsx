@@ -26,7 +26,7 @@ export function HomePage() {
 
   useEffect(() => {
     getNotes();
-  }, [isNoteModalOpen]);
+  }, [isNoteModalOpen, notes]);
 
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col ">

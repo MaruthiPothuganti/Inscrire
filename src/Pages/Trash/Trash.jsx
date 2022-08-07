@@ -60,10 +60,20 @@ export function Trash() {
                     <p className="text-xs">{note.createdAt}</p>
                   </div>
                   <div className="flex gap-3">
-                    <button onClick={() => restoreTrashedNote(note, token)}>
+                    <button
+                      onClick={() => {
+                        restoreTrashedNote(note, token);
+                        refetch();
+                      }}
+                    >
                       <FaTrashRestore title="Restore" />
                     </button>
-                    <button onClick={() => deletefromTrash(note, token)}>
+                    <button
+                      onClick={() => {
+                        deletefromTrash(note, token);
+                        refetch();
+                      }}
+                    >
                       <FaRegTrashAlt title="Delete permanently" />
                     </button>
                   </div>

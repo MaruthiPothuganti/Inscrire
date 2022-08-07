@@ -2,7 +2,11 @@ import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
 import parse from "html-react-parser";
 import { FaRegTrashAlt, MdUnarchive } from "../../Components/Icons";
-import { restoreArchivedNote, addToTrash } from "../../Utils/services";
+import {
+  restoreArchivedNote,
+  addToTrash,
+  deletefromArchived,
+} from "../../Utils/services";
 import { useQuery } from "react-query";
 
 export function Archive() {
@@ -70,11 +74,11 @@ export function Archive() {
                     </button>
                     <button
                       onClick={() => {
-                        addToTrash(note, token);
+                        deletefromArchived(note, token);
                         refetch();
                       }}
                     >
-                      <FaRegTrashAlt title="Trash" />
+                      <FaRegTrashAlt title="Delete" />
                     </button>
                   </div>
                 </div>
