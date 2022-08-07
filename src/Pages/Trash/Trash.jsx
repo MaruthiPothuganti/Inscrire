@@ -23,11 +23,10 @@ export function Trash() {
     }
   };
 
-  console.log("trash", trashNotes);
-
   useEffect(() => {
     getTrashedNotes(token);
   }, [trashNotes]);
+  console.log("trash", trashNotes);
 
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">

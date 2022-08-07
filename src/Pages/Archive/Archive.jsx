@@ -4,36 +4,46 @@ import { useAuth } from "../../Context/AuthContext";
 import parse from "html-react-parser";
 import { FaRegTrashAlt, MdUnarchive } from "../../Components/Icons";
 import { restoreArchivedNote, addToTrash } from "../../Utils/services";
+import { useQuery } from "react-query";
 
 export function Archive() {
   const [archivedNotes, setArchivedNotes] = useState([]);
   const { authState } = useAuth();
   const { token } = authState;
 
-  const getArchivedNotes = async (token) => {
-    try {
-      const resp = await axios.get(`/api/archives`, {
-        headers: { authorization: token },
-      });
-      if (resp) {
-        setArchivedNotes(resp.data.archives);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log("Archives", archivedNotes);
+  // const getArchivedNotes = async (token) => {
+  //   try {
+  //     const resp = await axios.get(`/api/archives`, {
+  //       headers: { authorization: token },
+  //     });
+  //     if (resp) {
+  //       setArchivedNotes(resp.data.archives);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // console.log("Archives", archivedNotes);
 
-  useEffect(() => {
-    getArchivedNotes(token);
-  }, [archivedNotes]);
+  // useEffect(() => {
+  //   getArchivedNotes(token);
+  // }, [archivedNotes]);
+
+  const getArchivedNotes = () => {
+    return axios.get("/api/archives", {
+      headers: { authorization: token },
+    });
+  };
+
+  const { data, refetch } = useQuery(["archives"], getArchivedNotes);
+  console.log(data);
 
   return (
     <main className="grow w-full h-auto p-8 flex justify-center gap-4 flex-col">
       <h1 className="text-2xl font-bold text-center">Archived</h1>
       <div className="flex flex-wrap justify-center gap-4">
-        {archivedNotes.length > 0 ? (
-          archivedNotes.map((note) => {
+        {data?.data.archives.length > 0 ? (
+          data?.data.archives.map((note) => {
             return (
               <div
                 key={note._id}
@@ -71,13 +81,18 @@ export function Archive() {
                     <p className="text-xs">{note.createdAt}</p>
                   </div>
                   <div className="flex gap-3">
-                    <button onClick={() => restoreArchivedNote(note, token)}>
+                    <button
+                      onClick={() => {
+                        restoreArchivedNote(note, token);
+                        refetch();
+                      }}
+                    >
                       <MdUnarchive title="UnArchive" />
                     </button>
                     <button
                       onClick={() => {
-                        console.log("bigitybogoty");
                         addToTrash(note, token);
+                        refetch();
                       }}
                     >
                       <FaRegTrashAlt title="Trash" />
