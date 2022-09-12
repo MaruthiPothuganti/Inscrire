@@ -7,8 +7,9 @@ export const tagReducer = (state, action) => {
     const { ADDTAG, DELETETAG, CLEARTAG } = ACTION_TYPES;
     switch (action.type) {
         case ADDTAG:
-            console.log(state)
-            return { ...state, tags: [...state.tags, { _id: uuid(),tag:action.payload}] }
+
+            return { ...state, tags: [...state.tags, { _id: uuid(), tag: action.payload }] }
+        console.log(state)
 
         case DELETETAG:
 
@@ -18,3 +19,4 @@ export const tagReducer = (state, action) => {
             return{...state}
     }
 }
+
