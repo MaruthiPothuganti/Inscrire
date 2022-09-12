@@ -50,7 +50,7 @@ export const Login = () => {
 
   return (
     <main className="w-full h-screen grid place-items-center">
-      <section className="w-4/5 h-4/5 flex flex-col px-12 md:w-2/4 max-w-2xl">
+      <section className="w-4/5 h-4/5 flex flex-col px-8 md:w-2/4 max-w-2xl">
         <h1 className="font-bold text-4xl my-3.5 md:w-auto">LogIn</h1>
         <form>
           <div className="mb-6">

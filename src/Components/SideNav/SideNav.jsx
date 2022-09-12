@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { routes } from "../routes";
 import { useNotes } from "../../Context/NoteContext";
+import { useAuth } from "../../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const SideNav = () => {
   const { setNoteModal } = useNotes();
+  const { authState } = useAuth();
+  const { token } = authState;
+  const navigate = useNavigate();
 
   return (
     <aside className="hidden  md:grid h-full p-8">
@@ -26,7 +31,9 @@ export const SideNav = () => {
           <button
             type="button"
             className="px-5 py-2.5 w-3/4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
-            onClick={() => setNoteModal(true)}
+            onClick={() => {
+              token ? setNoteModal(true) : navigate("/Login");
+            }}
           >
             + Create Note
           </button>

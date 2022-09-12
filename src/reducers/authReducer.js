@@ -4,7 +4,6 @@ const { LOGIN,LOGOUT, SIGNUP } = ACTION_TYPES;
 export const authReducer = (state, action) => {
     switch (action.type) {
         case LOGIN:
-            console.log(action.payload);
             localStorage.setItem("userData", JSON.stringify({
                 token: action.payload.data.encodedToken,
                 name: action.payload.data.foundUser.firstName,
