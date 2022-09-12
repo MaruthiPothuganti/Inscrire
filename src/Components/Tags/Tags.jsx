@@ -1,21 +1,14 @@
-import { tagReducer } from "../../reducers/tagReducer";
-import { useReducer, useState } from "react";
 import { AiOutlineTags, FaRegTrashAlt } from "../Icons";
 import { ACTION_TYPES } from "../../Utils/constants";
-import { v4 as uuid } from "uuid";
+import { useTags } from "../../Context/TagContext";
+import { useState } from "react";
 
 export const Tags = ({ setNote, note }) => {
   const [openTags, setOpentags] = useState(false);
   const [tag, setTag] = useState("");
   const { ADDTAG, DELETETAG } = ACTION_TYPES;
+  const { tagState, tagDispatch } = useTags();
 
-  const initialTagState = {
-    tags: [
-      { _id: uuid(), tag: "Work" },
-      { _id: uuid(), tag: "Personal" },
-    ],
-  };
-  const [tagState, tagDispatch] = useReducer(tagReducer, initialTagState);
   const showHideClassName = openTags
     ? `absolute p-2 z-10 left-6 bg-blue-500 top-full block`
     : `absolute p-2 z-10 left-6 bg-blue-500 top-full hidden`;
