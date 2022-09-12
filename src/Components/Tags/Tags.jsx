@@ -10,8 +10,8 @@ export const Tags = ({ setNote, note }) => {
   const { tagState, tagDispatch } = useTags();
 
   const showHideClassName = openTags
-    ? `absolute p-2 z-10 left-6 bg-blue-500 top-full block`
-    : `absolute p-2 z-10 left-6 bg-blue-500 top-full hidden`;
+    ? `absolute p-2 z-10 left-6 bg-blue-500 top-full max-h-48 overflow-y-auto block`
+    : `absolute p-2 z-10 left-6 bg-blue-500 top-full max-h-48 hidden`;
 
   return (
     <div className="relative">
@@ -31,6 +31,7 @@ export const Tags = ({ setNote, note }) => {
           />
           <button
             className="px-2 bg-gray-400"
+            disabled={tag === ""}
             onClick={() => {
               tagDispatch({
                 type: ADDTAG,
