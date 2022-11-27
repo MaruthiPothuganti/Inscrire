@@ -33,6 +33,7 @@ export const SideNav = () => {
             className="px-5 py-2.5 w-3/4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
             onClick={() => {
               token ? setNoteModal(true) : navigate("/Login");
+              navigate("/HomePage");
             }}
           >
             + Create Note

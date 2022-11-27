@@ -1,12 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { FiMenu, CgClose, BsFillMoonFill } from "../Icons";
 import { routes } from "../routes";
 import { useNotes } from "../../Context/NoteContext";
+import { useAuth } from "../../Context/AuthContext";
 
 export const Navbar = () => {
   const { setNoteModal } = useNotes();
+  const { authState } = useAuth();
+  const { token } = authState;
+  const navigate = useNavigate();
   return (
     <Popover className="relative bg-white">
       <div className="max-w-full mx-auto px-4 sm:px-6 border-b-2 border-blue-500">
@@ -83,7 +87,10 @@ export const Navbar = () => {
                     <button
                       type="button"
                       className="px-5 py-2.5 w-full text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
-                      onClick={() => setNoteModal(true)}
+                      onClick={() => {
+                        token ? setNoteModal(true) : navigate("/Login");
+                        navigate("/HomePage");
+                      }}
                     >
                       + Create Note
                     </button>
